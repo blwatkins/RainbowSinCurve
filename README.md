@@ -1,3 +1,3 @@
 # Rainbow Sin Curves
 
-Visualization of sin curves
+Visualization of sine curves
