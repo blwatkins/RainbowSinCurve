@@ -51,70 +51,9 @@ class Curve {
     }
   }
 
-  color rainbowColors(float comp) {
-    float col;
-    colorMode(HSB, 360);
-    col = map(comp % TWO_PI, 0, TWO_PI, 0, 360);
-    return color(col, 360, 360);
-  }
-
-  color softColors(float comp) {
-    float col;
-    colorMode(HSB, 360);
-    col = map(comp % TWO_PI, 0, TWO_PI, 90, 285);
-    return color(col, 360, 360);
-  }
-
-  color warmColors(float comp) {
-    float col;
-    colorMode(HSB, 360);
-    col = map(comp % TWO_PI, 0, TWO_PI, 0, 70);
-    return color(col, 360, 360);
-  }
-
-  color bottomColors(float comp) {
-    float col;
-    colorMode(HSB, 360);
-    col = map(comp % TWO_PI, 0, TWO_PI, 0, 180);
-    return color(col, 360, 360);
-  }
-
-  color topColors(float comp) {
-    float col;
-    colorMode(HSB, 360);
-    col = map(comp % TWO_PI, 0, TWO_PI, 180, 360);
-    return color(col, 360, 360);
-  }
-
-  void setCurveCol(ColType type) {
-    switch (type) {
-    case RAINBOW:
-      for (int i = 0; i < points.length; i++) {
-        points[i].setColor(rainbowColors(points[i].theta));
-      }
-      break;
-    case SOFT:
-      for (int i = 0; i < points.length; i++) {
-        points[i].setColor(softColors(points[i].theta));
-      }
-      break;
-    case WARM:
-      for (int i = 0; i < points.length; i++) {
-        points[i].setColor(warmColors(points[i].theta));
-      }
-      break;
-    case TOPC:
-      for (int i = 0; i < points.length; i++) {
-        points[i].setColor(topColors(points[i].theta));
-      }
-      break;
-    case BOTTOMC:
-      for (int i = 0; i < points.length; i++) {
-        points[i].setColor(bottomColors(points[i].theta));
-      }
-      break;
-    default:
-      break;
+  void setCurveCol(Color_HSB.ColType type) {
+    for (int i = 0; i < points.length; i++) {
+      points[i].setColor(Color_HSB.mapColor(type, points[i].theta % TWO_PI, 0, TWO_PI));
     }
   }
 }

@@ -14,15 +14,16 @@ int curveBuffer = 5;
 float xBuffer = 5.0;
 
 void setup() {
-  colorMode(HSB, 360);
   size(1500, 600);
+  colorMode(HSB, 360);
+  Color_HSB.init(this);
   while (currentY < height) {
     amp = random(10, 50);
     curves.add(new Curve(xStart, currentY + amp + yBuffer, width - xBuffer, amp, (int)random(1, 5)));
     currentY = currentY + (amp * 2) + curveBuffer;
   }
   for (Curve c: curves) {
-    c.setCurveCol(ColType.randomCol());
+    c.setCurveCol(Color_HSB.getRandomColType());
   }
 }
 

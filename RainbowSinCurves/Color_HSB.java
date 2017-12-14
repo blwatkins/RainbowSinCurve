@@ -48,7 +48,7 @@ public class Color_HSB {
     return choice;
   }
 
-  public static int mapColor(ColType type, int num, int min, int max) {
+  public static int mapColor(ColType type, float num, float min, float max) {
     int hue = 0;
     switch (type) {
     case RAINBOW:

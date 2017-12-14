@@ -71,4 +71,3 @@ class Point {
     col = newCol;
   }
 }
-
