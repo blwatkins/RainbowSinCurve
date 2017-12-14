@@ -10,8 +10,11 @@ float yBuffer = 10;
 float xBuffer = 5;
 boolean blackBg;
 
+void settings() {
+  size(displayWidth, displayHeight - 45);
+}
+
 void setup() {
-  size(1300, 600);
   colorMode(HSB, 360);
   Color_HSB.init(this);
   blackBg = true;
