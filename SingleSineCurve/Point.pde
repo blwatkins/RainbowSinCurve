@@ -59,6 +59,9 @@ class Point {
 
   void move() {
     theta += 0.1;
+    if (theta > TWO_PI) {
+     theta = theta % TWO_PI; 
+    }
     y = calculateSin();
   }
 
