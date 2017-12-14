@@ -6,12 +6,11 @@
 
 ArrayList<Curve> curves = new ArrayList<Curve>();
 
-float xStart = 10.0;
+float xStart = 10;
 float amp = 10;
-float currentY = 0.0;
-int yBuffer = 5;
-int curveBuffer = 5;
-float xBuffer = 5.0;
+float currentY = 0;
+float yBuffer = 10;
+float xBuffer = 5;
 
 void setup() {
   size(1500, 600);
@@ -19,12 +18,12 @@ void setup() {
   Color_HSB.init(this);
   while (currentY < height) {
     amp = random(10, 50);
-    curves.add(new Curve(xStart, currentY + amp + yBuffer, width - xBuffer, amp, (int)random(1, 5)));
-    currentY = currentY + (amp * 2) + curveBuffer;
-  }
-  for (Curve c: curves) {
+    Curve c = new Curve(xStart, currentY + amp + yBuffer, width - xBuffer, amp, (int)random(1, 5));
     c.setCurveCol(Color_HSB.getRandomColType());
+    curves.add(c);
+    currentY = currentY + (amp * 2) + yBuffer;
   }
+
 }
 
 void draw() {
@@ -33,7 +32,7 @@ void draw() {
   fill(10, 10);
   rect(-10, -10, width+10, height+10);
   colorMode(HSB, 360);
-  for (Curve c: curves) {
+  for (Curve c : curves) {
     c.moveCurve();
     c.displayCurve();
   }
