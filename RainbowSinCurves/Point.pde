@@ -35,7 +35,7 @@ class Point {
     this.baseY = baseY;
     x = baseX;
     y = calculateSin();
-    col = color(255, 0, 0);
+    col = color(255);
   }
   
   Point(float baseX, float baseY, float theta, float amp) {
@@ -45,7 +45,7 @@ class Point {
     this.baseY = baseY;
     x = baseX;
     y = calculateSin();
-    col = color(255, 0, 0);
+    col = color(255);
   }
 
   void display() {
