@@ -1,8 +1,5 @@
-// Brittni Watkins
-// Project Began: Unknown
-// Last Updated: 15 June 2017
-// IDE: Processing
-// Rainbow Sin Curve Visualization
+// Rainbow Sine Curve Visualization
+// Press any key to change the background from black to white
 
 ArrayList<Curve> curves = new ArrayList<Curve>();
 
@@ -11,32 +8,40 @@ float amp = 10;
 float currentY = 0;
 float yBuffer = 10;
 float xBuffer = 5;
+boolean blackBg;
 
 void setup() {
-  size(1500, 600);
+  size(1300, 600);
   colorMode(HSB, 360);
   Color_HSB.init(this);
+  blackBg = true;
+  int numPoints = (int)random(10, 100);  
+
 
   while (currentY < height) {
     amp = random(10, 50);
-    Curve c = new Curve(xStart, currentY + amp + yBuffer, width - xBuffer, amp, (int)random(1, 5));
+    Curve c = new Curve(xStart, currentY + amp + yBuffer, width - (xBuffer * 4), amp, (int)random(1, 5), numPoints);
     c.setCurveCol(Color_HSB.getRandomColType());
     curves.add(c);
     currentY = currentY + (amp * 2) + yBuffer;
   }
-  
 }
 
 void draw() {
-  colorMode(RGB, 255);
   noStroke();
-  fill(10, 10);
+  if (blackBg) {
+    fill(10, 10);
+  } else {
+    fill(360, 10);
+  }
   rect(-10, -10, width+10, height+10);
-  colorMode(HSB, 360);
-  
+
   for (Curve c : curves) {
     c.moveCurve();
     c.displayCurve();
   }
-  
+}
+
+void keyPressed() {
+  blackBg = !blackBg;
 }

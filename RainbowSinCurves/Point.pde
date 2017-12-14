@@ -1,3 +1,6 @@
+// Rainbow Sine Curve Visualization
+// Point class
+
 class Point {
 
   float baseX;
@@ -37,7 +40,7 @@ class Point {
     y = calculateSin();
     col = color(255);
   }
-  
+
   Point(float baseX, float baseY, float theta, float amp) {
     this.theta = theta;
     this.amp = amp;

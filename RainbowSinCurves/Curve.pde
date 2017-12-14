@@ -1,3 +1,6 @@
+// Rainbow Sine Curve Visualization
+// Curve class
+
 class Curve {
 
   float baseX;
@@ -39,45 +42,40 @@ class Curve {
       points.add(new Point(pointX, baseY, pointTheta, curveAmp));
       pointTheta += ( (TWO_PI * frequency) / numPoints);
     }
-    
   }
 
   float calculatePoint(int num) {
-    float result = num * (len / numPoints + 1) + baseX;
+    float result = num * (len / (numPoints - 1)) + baseX;
     return result;
   }
 
   void setCurveAmp(float newAmp) {
-    
+
     for (Point p : points) {
       p.setAmp(newAmp);
     }
-    
+
     curveAmp = newAmp;
   }
 
   void moveCurve() {
-    
+
     for (Point p : points) {
       p.move();
     }
-    
   }
 
   void displayCurve() {
-    
+
     for (Point p : points) {
       p.display();
     }
-    
   }
 
   void setCurveCol(Color_HSB.ColType type) {
-    
+
     for (Point p : points) {
       p.setColor(Color_HSB.mapColor(type, p.theta % TWO_PI, 0, TWO_PI));
     }
-    
   }
-  
 }
