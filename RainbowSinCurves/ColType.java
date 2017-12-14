@@ -2,10 +2,10 @@ import java.util.Random;
 
 public enum ColType {
   RAINBOW, 
-  SOFT, 
-  WARM, 
-  TOPC, 
-  BOTTOMC;
+    SOFT, 
+    WARM, 
+    TOPC, 
+    BOTTOMC;
 
   static int num = 5;
 
@@ -19,23 +19,17 @@ public enum ColType {
     int sel = r.nextInt(1000);
     if (sel % num == 0) {
       choice = RAINBOW;
-    } 
-    else if (sel % num == 1) {
+    } else if (sel % num == 1) {
       choice = SOFT;
-    } 
-    else if (sel % num == 2) {
+    } else if (sel % num == 2) {
       choice = WARM;
-    } 
-    else if (sel % num == 3) {
+    } else if (sel % num == 3) {
       choice = TOPC;
-    } 
-    else if (sel % num == 4) {
+    } else if (sel % num == 4) {
       choice = BOTTOMC;
-    } 
-    else {
+    } else {
       choice = SOFT;
     }
     return choice;
   }
 }
-

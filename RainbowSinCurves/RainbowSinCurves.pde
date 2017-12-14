@@ -15,7 +15,7 @@ float xBuffer = 5.0;
 
 void setup() {
   colorMode(HSB, 360);
-  size(800, 800);
+  size(1500, 600);
   while (currentY < height) {
     amp = random(10, 50);
     curves.add(new Curve(xStart, currentY + amp + yBuffer, width - xBuffer, amp, (int)random(1, 5)));

@@ -28,7 +28,7 @@ class Curve {
   }
 
   float calculatePoint(int num) {
-    float result = num * (size / points.length) + baseX;
+    float result = num * (size / points.length + 1) + baseX;
     return result;
   }
 
@@ -118,4 +118,3 @@ class Curve {
     }
   }
 }
-
