@@ -5,8 +5,8 @@ Curve c;
 boolean blackBg;
 
 void settings() {
-  //size(displayWidth, displayHeight - 45);
-  size(600, 600);
+  size(displayWidth, displayHeight - 45);
+  //size(600, 600);
 }
 
 void setup() {
@@ -22,7 +22,7 @@ void setup() {
   float amp = random(10, height / 2);
   int frequency = (int)random(1, 20);
 
-  c = new Curve(xStart, height / 2, width - (xBuffer * 4), 50, 1, 35);
+  c = new Curve(xStart, height / 2, width - (xBuffer * 4), amp, frequency, numPoints);
   c.setColType(Color_HSB.getRandomColType());
 }
 
@@ -51,8 +51,10 @@ void keyPressed() {
       c.increasePoints();
     }
   } else { 
-   if (key == 'a') {
+   if (key == 'd') {
     c.increaseFrequency(); 
+   }else if (key == 'a') {
+    c.decreaseFrequency(); 
    }
     
   }

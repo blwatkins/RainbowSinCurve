@@ -117,6 +117,7 @@ class Curve {
     if (points.size() > 2) {
       points.remove(points.size() - 1);
       numPoints--;
+      checkFrequency();
 
       for (int i = 0; i < numPoints; i++) {
         float pointX = calculatePoint(i);
@@ -146,6 +147,10 @@ class Curve {
   void checkFrequency() {
     if (numPoints / cycle > frequency) {
       frequency++;
+    } else if ((numPoints / cycle) + 1 <= frequency) {
+      if (numPoints % cycle == 0 && frequency > 1) {
+        frequency--;
+      }
     }
   }
 
@@ -158,6 +163,20 @@ class Curve {
     for (Point p : points) {
       p.theta = pointTheta;
       pointTheta += deltaTheta;
+    }
+  }
+
+  void decreaseFrequency() {
+    if (frequency > 1) {
+      frequency--;
+      deltaTheta = (TWO_PI * frequency) / numPoints;
+      cycle = numPoints / frequency;
+      float pointTheta = 0;
+
+      for (Point p : points) {
+        p.theta = pointTheta;
+        pointTheta += deltaTheta;
+      }
     }
   }
 }
