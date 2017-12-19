@@ -1,5 +1,5 @@
 // Rainbow Sine Curve Visualization
-// Press any key to change the background from black to white
+// Press the SPACE key to change the background from black to white
 
 ArrayList<Curve> curves = new ArrayList<Curve>();
 
@@ -46,5 +46,7 @@ void draw() {
 }
 
 void keyPressed() {
-  blackBg = !blackBg;
+  if (key == ' ') {
+    blackBg = !blackBg;
+  }
 }

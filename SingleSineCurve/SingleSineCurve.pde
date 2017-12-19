@@ -5,8 +5,8 @@ Curve c;
 boolean blackBg;
 
 void settings() {
-  size(displayWidth, displayHeight - 45);
-  //size(600, 600);
+  //size(displayWidth, displayHeight - 45);
+  size(800, 800);
 }
 
 void setup() {
@@ -51,11 +51,12 @@ void keyPressed() {
       c.increasePoints();
     }
   } else { 
-   if (key == 'd') {
-    c.increaseFrequency(); 
-   }else if (key == 'a') {
-    c.decreaseFrequency(); 
-   }
-    
+    if (key == 'd') {
+      c.increaseFrequency();
+    } else if (key == 'a') {
+      c.decreaseFrequency();
+    } else if (key == 'b') {
+     blackBg = !blackBg; 
+    }
   }
 }

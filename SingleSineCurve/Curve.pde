@@ -22,8 +22,17 @@ class Curve {
     this.frequency = frequency;
     this.curveAmp = curveAmp;
     this.numPoints = 30;
+    
     cycle = numPoints / frequency;
+    if (cycle < 1) {
+      cycle = 1;
+    }
+    
     colorCycle = numPoints / frequency;
+    if (colorCycle < 1) {
+      colorCycle = 1;
+    }
+    
     points = new ArrayList<Point>();
     createPoints();
   }
@@ -35,8 +44,17 @@ class Curve {
     this.frequency = frequency;
     this.curveAmp = curveAmp;
     this.numPoints = numPoints;
+    
     cycle = numPoints / frequency;
+    if (cycle < 1) {
+      cycle = 1;
+    }
+    
     colorCycle = numPoints / frequency;
+    if (colorCycle < 1) {
+      colorCycle = 1;
+    }
+    
     points = new ArrayList<Point>();
     createPoints();
   }
