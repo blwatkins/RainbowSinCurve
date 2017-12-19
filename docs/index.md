@@ -2,7 +2,7 @@
 
 ## Rainbow Sine Curves
 
-Project Began: June, 2015
+Project Began: Summer 2016
 
 Project Last Updated: December 14, 2017
 
