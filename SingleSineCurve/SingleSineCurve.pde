@@ -6,7 +6,7 @@ boolean blackBg;
 
 void settings() {
   //size(displayWidth, displayHeight - 45);
-  size(800, 800);
+  size(600, 600);
 }
 
 void setup() {

@@ -8,11 +8,10 @@ class Curve {
   float len;
   float curveAmp;
   float deltaTheta;
-  int originalFrequency;
   int frequency;
+  int cycle;
+  int colorCycle;
   int numPoints;
-  int originalNumPoints;
-  float colorDeltaTheta;
   ArrayList<Point> points;
   Color_HSB.ColType colType;
 
@@ -21,9 +20,10 @@ class Curve {
     this.baseY = baseY;
     this.len = len;
     this.frequency = frequency;
-    originalFrequency = frequency;
     this.curveAmp = curveAmp;
     this.numPoints = 30;
+    cycle = numPoints / frequency;
+    colorCycle = numPoints / frequency;
     points = new ArrayList<Point>();
     createPoints();
   }
@@ -33,9 +33,10 @@ class Curve {
     this.baseY = baseY;
     this.len = len;
     this.frequency = frequency;
-    originalFrequency = frequency;
     this.curveAmp = curveAmp;
     this.numPoints = numPoints;
+    cycle = numPoints / frequency;
+    colorCycle = numPoints / frequency;
     points = new ArrayList<Point>();
     createPoints();
   }
@@ -53,10 +54,7 @@ class Curve {
       numPoints = 2;
     }
 
-    originalNumPoints = numPoints;
-
     deltaTheta = (TWO_PI * frequency) / numPoints;
-    colorDeltaTheta = deltaTheta;
 
     for (int i = 0; i < numPoints; i++) {
       pointX = calculatePoint(i);
@@ -109,8 +107,8 @@ class Curve {
 
   void setPointColors() {
 
-    for (Point p : points) {
-      p.setColor(Color_HSB.mapColor(colType, p.theta % TWO_PI, 0, TWO_PI));
+    for (int i = 0; i < points.size(); i++) {
+      points.get(i).setColor(Color_HSB.mapColor(colType, i % colorCycle, 0, colorCycle));
     }
   }
 
@@ -128,7 +126,6 @@ class Curve {
   }
 
   void increasePoints() {
-    float colorTheta = 0;
     numPoints++;
 
     for (int i = 0; i < numPoints; i++) {
@@ -137,30 +134,26 @@ class Curve {
       if (i == numPoints - 1) {
         float pointTheta = points.get(i-1).theta + deltaTheta;
         Point p = new Point(pointX, baseY, pointTheta, curveAmp);
-        p.setColor(Color_HSB.mapColor(colType, colorTheta % TWO_PI, 0, TWO_PI));
+        p.setColor(Color_HSB.mapColor(colType, i % colorCycle, 0, colorCycle));
         points.add(p);
         checkFrequency();
       } else {
         points.get(i).x = pointX;
       }
-
-      colorTheta += colorDeltaTheta;
     }
   }
 
   void checkFrequency() {
-    if (numPoints / originalNumPoints > frequency) {
+    if (numPoints / cycle > frequency) {
       frequency++;
-      println("freqency = " + frequency);
     }
   }
 
   void increaseFrequency() {
-    frequency += 1;
+    frequency++;
     deltaTheta = (TWO_PI * frequency) / numPoints;
+    cycle = numPoints / frequency;
     float pointTheta = 0;
-
-    colorDeltaTheta = (TWO_PI * frequency / (abs(originalFrequency - frequency) + 1)) / numPoints;
 
     for (Point p : points) {
       p.theta = pointTheta;
