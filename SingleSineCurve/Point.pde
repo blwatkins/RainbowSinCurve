@@ -2,7 +2,6 @@
 // Point class
 
 class Point {
-
   float baseX;
   float baseY;
   float x;
@@ -59,9 +58,11 @@ class Point {
 
   void move() {
     theta += 0.1;
+    
     if (theta > TWO_PI) {
-     theta = theta % TWO_PI; 
+      theta = theta % TWO_PI;
     }
+    
     y = calculateSin();
   }
 

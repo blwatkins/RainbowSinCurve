@@ -2,7 +2,6 @@
 // Curve class
 
 class Curve {
-
   float baseX;
   float baseY;
   float len;
@@ -13,7 +12,7 @@ class Curve {
   int colorCycle;
   int numPoints;
   ArrayList<Point> points;
-  Color_HSB.ColType colType;
+  ColType colType;
 
   Curve(float baseX, float baseY, float len, float curveAmp, int frequency) {
     this.baseX = baseX;
@@ -22,17 +21,17 @@ class Curve {
     this.frequency = frequency;
     this.curveAmp = curveAmp;
     this.numPoints = 30;
-    
+
     cycle = numPoints / frequency;
     if (cycle < 1) {
       cycle = 1;
     }
-    
+
     colorCycle = numPoints / frequency;
     if (colorCycle < 1) {
       colorCycle = 1;
     }
-    
+
     points = new ArrayList<Point>();
     createPoints();
   }
@@ -44,22 +43,22 @@ class Curve {
     this.frequency = frequency;
     this.curveAmp = curveAmp;
     this.numPoints = numPoints;
-    
+
     cycle = numPoints / frequency;
     if (cycle < 1) {
       cycle = 1;
     }
-    
+
     colorCycle = numPoints / frequency;
     if (colorCycle < 1) {
       colorCycle = 1;
     }
-    
+
     points = new ArrayList<Point>();
     createPoints();
   }
 
-  void setColType(Color_HSB.ColType type) {
+  void setColType(ColType type) {
     this.colType = type;
     setPointColors();
   }
@@ -96,42 +95,36 @@ class Curve {
   }
 
   void increaseAmp() {
-
     if (curveAmp < height) {
       setCurveAmp(curveAmp + 1);
     }
   }
 
   void decreaseAmp() {
-
     if (curveAmp > 10) {
       setCurveAmp(curveAmp - 1);
     }
   }
 
   void move() {
-
     for (Point p : points) {
       p.move();
     }
   }
 
   void display() {
-
     for (Point p : points) {
       p.display();
     }
   }
 
   void setPointColors() {
-
     for (int i = 0; i < points.size(); i++) {
-      points.get(i).setColor(Color_HSB.mapColor(colType, i % colorCycle, 0, colorCycle));
+      points.get(i).setColor(mapColor(colType, i % colorCycle, 0, colorCycle));
     }
   }
 
   void decreasePoints() {
-
     if (points.size() > 2) {
       points.remove(points.size() - 1);
       numPoints--;
@@ -153,7 +146,7 @@ class Curve {
       if (i == numPoints - 1) {
         float pointTheta = points.get(i-1).theta + deltaTheta;
         Point p = new Point(pointX, baseY, pointTheta, curveAmp);
-        p.setColor(Color_HSB.mapColor(colType, i % colorCycle, 0, colorCycle));
+        p.setColor(mapColor(colType, i % colorCycle, 0, colorCycle));
         points.add(p);
         checkFrequency();
       } else {
