@@ -2,7 +2,6 @@
 // Point class
 
 class Point {
-
   float baseX;
   float baseY;
   float x;

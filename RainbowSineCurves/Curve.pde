@@ -59,23 +59,20 @@ class Curve {
   }
 
   void moveCurve() {
-
     for (Point p : points) {
       p.move();
     }
   }
 
   void displayCurve() {
-
     for (Point p : points) {
       p.display();
     }
   }
 
-  void setCurveCol(Color_HSB.ColType type) {
-
+  void setCurveCol(ColType type) {
     for (Point p : points) {
-      p.setColor(Color_HSB.mapColor(type, p.theta % TWO_PI, 0, TWO_PI));
+      p.setColor(mapColor(type, p.theta % TWO_PI, 0, TWO_PI));
     }
   }
 }
