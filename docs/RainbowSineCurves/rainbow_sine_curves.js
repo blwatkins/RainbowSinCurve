@@ -18,7 +18,6 @@ function setup() {
     blackBg = true;
     var numPoints = parseInt(random(10, 100)); 
 
-
     p = new Point(100, 200, 0.6, 50);
     print(p);
 
@@ -52,7 +51,9 @@ function draw() {
 }
 
 function keyTyped() {
+
     if (key == 'a') {
       blackBg = !blackBg;
     }
+
 }
