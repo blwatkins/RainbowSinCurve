@@ -1,6 +1,6 @@
 # Sine Curves
 
-## Rainbow Sine Curves
+## [Rainbow Sine Curves](RainbowSineCurves/index.html)
 
 Project Began: Summer 2016
 
@@ -11,6 +11,8 @@ Project Last Updated: December 31, 2017
 <br>
 
 [Processing Code](https://github.com/blwatkins/SineCurves/tree/master/RainbowSineCurves)
+
+[p5.js Code](https://github.com/blwatkins/SineCurves/tree/master/docs/RainbowSineCurves)
 
 ## Single Sine Curve
 
