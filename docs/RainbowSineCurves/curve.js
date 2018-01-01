@@ -19,6 +19,7 @@ function Curve(baseX, baseY, len, amp, frequency, numPoints) {
             this.points.push(new Point(pointX, this.baseY, pointTheta, this.amp));
             pointTheta += ((TWO_PI * this.frequency) / this.numPoints);
         }
+
     };
 
     this.calculatePoint = function(num) {
@@ -52,6 +53,5 @@ function Curve(baseX, baseY, len, amp, frequency, numPoints) {
         }
 
     };
-
 
 }

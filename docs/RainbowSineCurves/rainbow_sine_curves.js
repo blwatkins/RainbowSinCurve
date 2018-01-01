@@ -13,16 +13,7 @@ function setup() {
 }
 
 function draw() {
-    noStroke();
-
-    if (blackBg) {
-      fill(10, 10);
-    } else {
-      fill(360, 10);
-    }
-
-    rect(-10, -10, width+10, height+10);
-
+    drawBackground();
     curves.forEach(displayAndMoveCurve);
 }
 
@@ -59,6 +50,18 @@ function createCurves() {
       currentY = currentY + (amp * 2) + yBuffer;
     }
 
+}
+
+function drawBackground() {
+    noStroke();
+
+    if (blackBg) {
+      fill(10, 10);
+    } else {
+      fill(360, 10);
+    }
+
+    rect(-10, -10, width+10, height+10);
 }
 
 function displayAndMoveCurve(curve) {
