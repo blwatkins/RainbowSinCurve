@@ -54,7 +54,7 @@ function Curve(baseX, baseY, len, amp, frequency, numPoints) {
 
     };
 
-    this.setCurveAmp = function(newAmp) {
+    this.setAmp = function(newAmp) {
 
         for (var i = 0; i < this.points.length; i++) {
             this.points[i].setAmp(newAmp);
@@ -66,7 +66,15 @@ function Curve(baseX, baseY, len, amp, frequency, numPoints) {
     this.increaseAmp = function() {
 
         if (this.amp < height / 2) {
-            this.setCurveAmp(this.amp + 1);
+            this.setAmp(this.amp + 1);
+        }
+
+    };
+
+    this.decreaseAmp = function() {
+
+        if (this.amp > 10) {
+            this.setAmp(this.amp - 1);
         }
 
     };
