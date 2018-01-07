@@ -54,4 +54,21 @@ function Curve(baseX, baseY, len, amp, frequency, numPoints) {
 
     };
 
+    this.setCurveAmp = function(newAmp) {
+
+        for (var i = 0; i < this.points.length; i++) {
+            this.points[i].setAmp(newAmp);
+        }
+
+        this.amp = newAmp;
+    };
+
+    this.increaseAmp = function() {
+
+        if (this.amp < height / 2) {
+            this.setCurveAmp(this.amp + 1);
+        }
+
+    };
+
 }
