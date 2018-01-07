@@ -1,12 +1,6 @@
 // Single Sine Curve Visualization
 // Press the 'q' key to increase the amplitude
 // Press the 'a' key to decreate the amplitude
-// Press the LEFT key to decrease the number of points
-// Press the RIGHT key to increase the number of points
-// Press the 'a' key to increase the frequency
-// Press the 'd' key to decrease the frequency
-// Press the 'q' key to change the background from black to white
-// Press the 's' key to randomly change the color scheme
 
 var c;
 var blackBg;
@@ -37,10 +31,13 @@ function keyTyped() {
 function createInstructions() {
     var instructionHeader = createElement("h1", "Instructions");
     var instructionList = createElement("ul", "");
-    var i1 = createElement("li", "Press the 'q' key to increase the amplitude");
-    var i2 = createElement("li", "Press the 'a' key to decrease the amplitude");
-    i1.parent(instructionList);
-    i2.parent(instructionList);
+    var instructions = [];
+    instructions.push(createElement("li", "Press the 'q' key to increase the amplitude"));
+    instructions.push(createElement("li", "Press the 'a' key to decrease the amplitude"));
+
+    for (var i = 0; i < instructions.length; i++) {
+        instructions[i].parent(instructionList);
+    }
 }
 
 function createCurve() {
