@@ -9,6 +9,16 @@ function Curve(baseX, baseY, len, amp, frequency, numPoints) {
     this.amp = amp;
     this.numPoints = numPoints;
     this.points = [];
+    this.deltaTheta = 0;
+
+    this.cycle = parseInt(this.numPoints / this.frequency);
+
+    if (this.cycle < 1) {
+        this.cycle = 1;
+    }
+
+    this.colorCycle = this.cycle;
+    this.colorType = ColorType.RAINBOW;
 
     this.createPoints = function() {
         var pointX = baseX;
@@ -46,7 +56,9 @@ function Curve(baseX, baseY, len, amp, frequency, numPoints) {
     };
 
     this.setColor = function(colorType) {
+        this.colorType = colorType;
 
+        console.log(this.colorType);
         for (var i = 0; i < this.points.length; i++) {
             var p = this.points[i];
             p.setColor(mapColor(colorType, p.theta % TWO_PI, 0, TWO_PI));

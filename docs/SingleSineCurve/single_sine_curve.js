@@ -38,10 +38,11 @@ function createInstructions() {
     for (var i = 0; i < instructions.length; i++) {
         instructions[i].parent(instructionList);
     }
+
 }
 
 function createCurve() {
-    var numPoints = parseInt(random(10, 100)); 
+    var numPoints = 10;//parseInt(random(10, 100)); 
     var xStart = 10;
     var xBuffer = 10;
     var amp = 10; //random(10, height / 2);;
