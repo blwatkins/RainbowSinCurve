@@ -34,4 +34,12 @@ function Point(baseX, baseY, theta, amp) {
         this.col = newCol;
     };
 
+    this.setX = function(newX) {
+        this.x = newX;
+    };
+
+    this.getTheta = function() {
+        return this.theta;
+    }
+
 }

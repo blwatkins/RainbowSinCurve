@@ -20,14 +20,23 @@ function Curve(baseX, baseY, len, amp, frequency, numPoints) {
     this.colorCycle = this.cycle;
     this.colorType = ColorType.RAINBOW;
 
+    console.log(this.frequency);
+    console.log(this.cycle);
+
+
     this.createPoints = function() {
         var pointX = baseX;
         var pointTheta = 0;
+        this.deltaTheta = (TWO_PI * this.frequency) / this.numPoints;
 
-        for (var i = 0; i < numPoints; i++) {
+        if (this.numPoints < 2) {
+            this.numPoints = 2;
+        }
+
+        for (var i = 0; i < this.numPoints; i++) {
             pointX = this.calculatePoint(i);
             this.points.push(new Point(pointX, this.baseY, pointTheta, this.amp));
-            pointTheta += ((TWO_PI * this.frequency) / this.numPoints);
+            pointTheta += this.deltaTheta;
         }
 
     };
@@ -58,10 +67,9 @@ function Curve(baseX, baseY, len, amp, frequency, numPoints) {
     this.setColor = function(colorType) {
         this.colorType = colorType;
 
-        console.log(this.colorType);
         for (var i = 0; i < this.points.length; i++) {
             var p = this.points[i];
-            p.setColor(mapColor(colorType, p.theta % TWO_PI, 0, TWO_PI));
+            p.setColor(mapColor(colorType, i % this.colorCycle, 0, this.colorCycle));
         }
 
     };
@@ -87,6 +95,57 @@ function Curve(baseX, baseY, len, amp, frequency, numPoints) {
 
         if (this.amp > 10) {
             this.setAmp(this.amp - 1);
+        }
+
+    };
+
+    this.checkFrequency = function() {
+        var curFrequency = parseInt(this.numPoints / this.cycle);
+
+        if (curFrequency > this.frequency) {
+            this.frequency = curFrequency;
+        } else if (curFrequency + 1 <= this.frequency) {
+
+            if (parseInt(this.numPoints % this.cycle) == 0 && this.frequency > 1) {
+                this.frequency = curFrequency;
+            }
+
+        }
+
+    };
+
+    this.decreasePoints = function() {
+
+        if (this.points.length > 2) {
+            var p = this.points.pop();
+            this.numPoints--;
+            this.checkFrequency();
+
+            for (var i = 0; i < this.points.length; i++) {
+                var pointX = this.calculatePoint(i);
+                this.points[i].setX(pointX);
+            }
+
+        }
+
+    };
+
+    this.increasePoints = function() {
+        this.numPoints++;
+
+        for (var i = 0; i < this.numPoints; i++) {
+            var pointX = this.calculatePoint(i);
+
+            if (i == this.numPoints - 1) {
+                var pointTheta = this.points[i - 1].getTheta() + this.deltaTheta;
+                var p = new Point(pointX, this.baseY, pointTheta, this.amp);
+                p.setColor(mapColor(this.colorType, i % this.colorCycle, 0, this.colorCycle));
+                this.points.push(p);
+                this.checkFrequency();
+            } else {
+                this.points[i].setX(pointX);
+            }
+
         }
 
     };
