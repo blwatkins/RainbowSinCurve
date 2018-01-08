@@ -1,5 +1,5 @@
 // Rainbow Sine Curve Visualization
-// Press the 'a' key to change the background from black to white
+// Press the 'a' key to change the background to black or white
 
 var curves = [];
 var blackBg;

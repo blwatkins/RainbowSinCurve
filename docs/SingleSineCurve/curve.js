@@ -20,10 +20,6 @@ function Curve(baseX, baseY, len, amp, frequency, numPoints) {
     this.colorCycle = this.cycle;
     this.colorType = ColorType.RAINBOW;
 
-    console.log(this.frequency);
-    console.log(this.cycle);
-
-
     this.createPoints = function() {
         var pointX = baseX;
         var pointTheta = 0;
@@ -103,11 +99,11 @@ function Curve(baseX, baseY, len, amp, frequency, numPoints) {
         var curFrequency = parseInt(this.numPoints / this.cycle);
 
         if (curFrequency > this.frequency) {
-            this.frequency = curFrequency;
+            this.frequency++;
         } else if (curFrequency + 1 <= this.frequency) {
 
             if (parseInt(this.numPoints % this.cycle) == 0 && this.frequency > 1) {
-                this.frequency = curFrequency;
+                this.frequency--;
             }
 
         }
@@ -144,6 +140,46 @@ function Curve(baseX, baseY, len, amp, frequency, numPoints) {
                 this.checkFrequency();
             } else {
                 this.points[i].setX(pointX);
+            }
+
+        }
+
+    };
+
+    this.increaseFrequency = function() {
+        this.frequency++;
+        this.deltaTheta = (TWO_PI * this.frequency) / this.numPoints;
+        this.cycle = parseInt(this.numPoints / this.frequency);
+        
+        if (this.cycle < 1) {
+            this.cycle = 1;
+        }
+        var pointTheta = 0;
+
+        for (var i = 0; i < this.points.length; i++) {
+            this.points[i].setTheta(pointTheta);
+            pointTheta += this.deltaTheta;
+        }
+        
+    };
+
+    this.decreaseFrequency = function() {
+
+        if (this.frequency > 1) {
+            this.frequency--;
+
+            this.deltaTheta = (TWO_PI * this.frequency) / this.numPoints;
+            this.cycle = parseInt(this.numPoints / this.frequency);
+           
+            if (this.cycle < 1) {
+                this.cycle = 1;
+            }
+
+            var pointTheta = 0;
+
+            for (var i = 0; i < this.points.length; i++) {
+                this.points[i].setTheta(pointTheta);
+                pointTheta += this.deltaTheta;
             }
 
         }
