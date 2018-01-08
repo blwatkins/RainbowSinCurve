@@ -78,9 +78,9 @@ function drawBackground() {
     noStroke();
 
     if (blackBg) {
-      fill(10, 10);
+      fill(10, 20);
     } else {
-      fill(360, 10);
+      fill(360, 20);
     }
 
     rect(-10, -10, width+10, height+10);
