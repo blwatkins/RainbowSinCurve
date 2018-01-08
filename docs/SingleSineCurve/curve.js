@@ -154,20 +154,20 @@ function Curve(baseX, baseY, len, amp, frequency, numPoints) {
         if (this.cycle < 1) {
             this.cycle = 1;
         }
+
         var pointTheta = 0;
 
         for (var i = 0; i < this.points.length; i++) {
             this.points[i].setTheta(pointTheta);
             pointTheta += this.deltaTheta;
         }
-        
+
     };
 
     this.decreaseFrequency = function() {
 
         if (this.frequency > 1) {
             this.frequency--;
-
             this.deltaTheta = (TWO_PI * this.frequency) / this.numPoints;
             this.cycle = parseInt(this.numPoints / this.frequency);
            

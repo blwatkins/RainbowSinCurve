@@ -5,6 +5,8 @@
 // Press the 's' key to decrease the frequency
 // Press the 'e' key to increase the number of points
 // Press the 'd' key to decrease the number of points
+// Press the 'r' key to change the background to black or white
+// Press the 'f' key to randomly change the color scheme
 
 var c;
 var blackBg;
