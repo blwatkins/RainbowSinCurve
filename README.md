@@ -1,4 +1,4 @@
-# Sine Curves
+# [Sine Curves](https://blwatkins.github.io/SineCurves/)
 
 Visualization of sine curves
 
