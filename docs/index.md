@@ -1,28 +1,28 @@
 # Sine Curves
 
-## [Rainbow Sine Curves](RainbowSineCurves/index.html)
+## Rainbow Sine Curves
 
-Project Began: Summer 2016
-
-Project Last Updated: January 1, 2018
+A series of rainbow sine curves with random frequencies, amplitudes, and color schemes.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/0x3UcjEQwcE" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
 
 <br>
 
+[Online Interactive Version](RainbowSineCurves/index.html)
+
 [Processing Code](https://github.com/blwatkins/SineCurves/tree/master/RainbowSineCurves)
 
 [p5.js Code](https://github.com/blwatkins/SineCurves/tree/master/docs/RainbowSineCurves)
 
-## [Single Sine Curve](SingleSineCurve/index.html)
+## Single Sine Curve
 
-Project Began: December 14, 2017
-
-Project Last Updated: January 7, 2018
+A single sine curve whose amplitude, frequency, color scheme, and density can be changed by the user with keyboard interaction.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/s8gpmwkz63Q" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
 
 <br>
+
+[Online Interactive Version](SingleSineCurve/index.html)
 
 [Processing Code](https://github.com/blwatkins/SineCurves/tree/master/SingleSineCurve)
 
